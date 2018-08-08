@@ -23,6 +23,8 @@
 }
 
 .mod-ctn .content{
-    padding-top:40px; 
+    margin-top: 20px;
+    border-top: 1px solid #999;
+    padding-top:20px; 
     width: 100%;
 }
