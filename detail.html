@@ -32,6 +32,7 @@
             <div class="title" id="title"></div>
             <div class="authorInfo">作者：<span>海涛</span></div>
             <div class="authorInfo">日期：<span>2018年7月27日</span></div>
+            <div class="picture"><img id="image" src=""></div>
             <div class="content" id="content"></div>
         </div>
 
@@ -65,6 +66,7 @@ $(function(){
                 var data = res.data
                 $("#title").html(data.title)
                 $("#content").html(data.content)
+                $("#image").attr("src",data,src)
             }
         },
         error: function(){
