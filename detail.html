@@ -30,7 +30,7 @@
         </div>
 
         <div class="mod-footer">
-                <span>邮箱：178224406@qq.com</span>|<span>GitHub：https://github.com/alwaysrunning</span>
+            <span>邮箱：178224406@qq.com</span>|<span>GitHub：https://github.com/alwaysrunning</span>
         </div>
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -39,24 +39,34 @@
 </html>
 
 
-
-
 <script type="text/javascript">
-    $(function(){ 
-        $.ajax({
-            type:"get",
-            url:"http://116.85.25.126:8082/api/getInfo",
-            data:{id:1},
-            success: function(res){
-                if(res.error==0){
-                    var data = res.data
-                    $("#title").html(data.title)
-                    $("#content").html(data.content)
-                }
-            },
-            error: function(){
 
+function getQueryStringByName(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    var context = "";
+    if (r != null)
+        context = r[2];
+    reg = null;
+    r = null;
+    return context == null || context == "" || context == "undefined" ? "" : context;
+}
+
+$(function(){ 
+    $.ajax({
+        type:"get",
+        url:"http://116.85.25.126:8082/api/getInfo",
+        data:{id:getQueryStringByName("id")||2},
+        success: function(res){
+            if(res.error==0){
+                var data = res.data
+                $("#title").html(data.title)
+                $("#content").html(data.content)
             }
-        })
+        },
+        error: function(){
+
+        }
     })
+})
 </script>
