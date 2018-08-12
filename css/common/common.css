@@ -4,6 +4,7 @@
     box-shadow: 0 0 3px 3px #ccc;
     background: #fff;
     padding: 24px 40px;
+    min-height: 700px;
 }
 .mod-frame .mod-header{
     width: 100%;
