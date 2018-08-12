@@ -12,7 +12,43 @@
         <link href="./css/conf/index/index.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="mod-header">
+        <div class="mod-frame">
+            <div class="mod-header">
+                <div class="title">杨海涛个人博客</div>
+                <div class="description">提供一个分享个人学习生活工作经验的平台</div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+            <div class="mod-ctn">
+                <ul class="list" id="list">
+                    <li>
+                        <div class="title">是的发生的</div>
+                        <div class="describe">的郭德纲阿斯蒂芬阿斯蒂芬发生实
+                            打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的
+                            郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生
+                            实打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的郭德纲阿
+                            斯蒂芬阿斯蒂芬发生实打实地方是</div>
+                        <div class="zan">
+                            <span class="publish">发布于2018-08-08</span>
+                            <span class="clss">属于 技术 分类</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="classify" id="classify">
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="mod-header">
             <div class="charactor">博客</div>
             <div class="header">
                 <div class="name">杨海涛的网络日志</div>
@@ -27,31 +63,9 @@
                 </div>
             </div>
             <div class="avtar"><img src="http://116.85.25.126:8888/images/upload/1533610891443.png"></div>
-        </div>
+        </div> -->
 
-        <div class="mod-ctn">
-            <ul class="list" id="list">
-                <li>
-                    <div class="title">是的发生的</div>
-                    <div class="describe">的郭德纲阿斯蒂芬阿斯蒂芬发生实
-                        打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的
-                        郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生
-                        实打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的郭德纲阿
-                        斯蒂芬阿斯蒂芬发生实打实地方是</div>
-                    <div class="zan">
-                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                        <span class="num">13</span>
-                    </div>
-                </li>
-            </ul>
-            <div class="classify" id="classify">
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-            </div>
-        </div>
+        
 
         
     <script src="./js/common/jquery.min.js"></script>
@@ -101,6 +115,7 @@
             url:"http://116.85.25.126:8082/api/list",
             data:{},
             success: function(res){
+                return
                 if(res.data){
                     let list = res.data;
                     var html = template('listCnt', {list:list});

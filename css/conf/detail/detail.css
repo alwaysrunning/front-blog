@@ -1,9 +1,11 @@
 .mod-ctn{
-    width: 700px;
-    margin: 0 auto 20px;
+    width: 100%;
     overflow: hidden;
 }
-
+.mod-ctn .leftcn{
+    float: left;
+    width: 746px;
+}
 .mod-ctn .title{
     width: 100%;
     font-size: 28px;

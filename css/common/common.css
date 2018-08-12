@@ -1,70 +1,57 @@
-.mod-header {
+.mod-frame{
+    width: 1220px;
+    margin: 40px auto 50px;
+    box-shadow: 0 0 3px 3px #ccc;
+    background: #fff;
+    padding: 24px 40px;
+}
+.mod-frame .mod-header{
     width: 100%;
     border-bottom: 1px solid #efefef;
-    margin-bottom: 10px;
     position: relative;
 }
 
-.mod-header .charactor{
-    width: 80px;
-    height: 65px;
-    line-height: 65px;
-    position: absolute;
-    border-radius: 100%;
-    left: 10px;
-    top: 0px;
-    color: #f00;
+.mod-frame .mod-header .title{
     font-size: 30px;
-    font-weight: 400;
+    color: #000;
+    font-weight: bold;
 }
 
-.mod-header .avtar{
-    width: 40px;
-    height: 40px;
+.mod-frame .mod-header .description{
+    font-size: 14px;
+    color: #999;
+    padding: 10px 0 20px;
+}
+
+.mod-frame .mod-header .input-group{
     position: absolute;
-    border-radius: 100%;
     right: 10px;
     top: 10px;
-    background: #f00;
-    overflow: hidden;
-}
-
-.mod-header .avtar img{
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.mod-header .header{
-    width: 1000px;
-    margin: 0 auto;
-    height: 60px;
-    overflow: hidden;
-    position: relative;
-}
-
-.mod-header .header .name{
-    float: left;
-    width: 150px;
-    line-height: 49px;
-    color: #333;
-}
-
-.mod-header .header .input-group{
-    float: right;
     width: 250px;
-    margin-top: 14px;
 }
 
-.mod-header .header .contact{
-    position: absolute;
-    bottom: 4px;
-    left: 0;
+
+/* 右边分类 */
+.mod-ctn .classify{
+    float: right;
+    width: 290px;
+    margin: 20px 0 0 0;
+}
+
+.mod-ctn .classify a{
     width: 100%;
-    font-size: 12px;
-    color: #999;
-}
-
-.mod-header .header .contact span{
-    padding:0 10px;
+    height: 46px;
+    line-height: 46px;
+    display: block;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    background: #f69581;
+    padding: 0 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    margin-bottom: 10px;
 }
