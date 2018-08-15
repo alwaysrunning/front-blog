@@ -1,36 +1,11 @@
 .mod-ctn{
-    width: 1000px;
-    margin: 0 auto 20px;
-    overflow: hidden;
-}
-
-.mod-ctn .classify{
-    float: right;
-    width: 280px;
-    margin: 20px 0 0 0;
-}
-
-.mod-ctn .classify a{
     width: 100%;
-    height: 46px;
-    line-height: 46px;
-    display: block;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #fff;
-    background: #f69581;
-    padding: 0 20px;
-    box-sizing: border-box;
-    cursor: pointer;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .mod-ctn .list{
     float: left;
-    width: 630px;
+    width: 746px;
 }
 
 .mod-ctn .list li{
@@ -43,13 +18,12 @@
 
 .mod-ctn .list li .title{
     width: 100%;
-    font-size: 18px;
-    padding-bottom: 5px;
-    font-weight: bolder;
+    font-size: 22px;
+    padding-bottom: 10px;
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
-    color: #333;
+    color: #21759b;
 }
 
 .mod-ctn .list li .describe{
@@ -60,7 +34,7 @@
     display:-webkit-box; 
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2;
-    color: #999;
+    color: #666;
 }
 
 .mod-ctn .list li.hasPic .title,.mod-ctn .list li.hasPic .describe{
@@ -83,16 +57,16 @@
 
 .mod-ctn .list li .zan{
     width: 100%;
-    color: #b4b4b4;
+    color: #999;
     padding: 8px 0;
+    font-size: 12px
 }
 
-.mod-ctn .list li .zan .num{
+.mod-ctn .list li .zan .publish{
     padding: 0
 }
 
-.mod-ctn .list li .zan .glyphicon-heart{
-    margin: 2px 0 0 2px;
-    font-size: 12px
+.mod-ctn .list li .zan .clss{
+    padding-left: 10px
 }
 

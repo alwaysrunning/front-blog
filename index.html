@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>博客</title>
+        <meta name="keywords" content="杨海涛个人博客|提供一个分享个人学习生活工作经验的平台">
+        <meta name="description" content="杨海涛个人博客|提供一个分享个人学习生活工作经验的平台">
+        <title>杨海涛个人博客</title>
         <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <!-- <link href="./css/common/bootstrap.min.css" rel="stylesheet"> -->
         <link href="./css/common/reset.css" rel="stylesheet" type="text/css">
@@ -12,11 +14,47 @@
         <link href="./css/conf/index/index.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="frame">
+        <div class="mod-frame">
             <div class="mod-header">
-                
+                <div class="title">杨海涛个人博客</div>
+                <div class="description">提供一个分享个人学习生活工作经验的平台</div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+            <div class="mod-ctn">
+                <div class="list">
+                    <ul id="list">
+                        <li>
+                            <div class="title">是的发生的</div>
+                            <div class="describe">的郭德纲阿斯蒂芬阿斯蒂芬发生实
+                                打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的
+                                郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生
+                                实打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的郭德纲阿
+                                斯蒂芬阿斯蒂芬发生实打实地方是</div>
+                            <div class="zan">
+                                <span class="publish">发布于2018-08-08</span>
+                                <span class="clss">属于 技术 分类</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>
+                </div>
+                <div class="classify" id="classify">
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
+                </div>
             </div>
         </div>
+
         <!-- <div class="mod-header">
             <div class="charactor">博客</div>
             <div class="header">
@@ -32,35 +70,14 @@
                 </div>
             </div>
             <div class="avtar"><img src="http://116.85.25.126:8888/images/upload/1533610891443.png"></div>
-        </div>
-
-        <div class="mod-ctn">
-            <ul class="list" id="list">
-                <li>
-                    <div class="title">是的发生的</div>
-                    <div class="describe">的郭德纲阿斯蒂芬阿斯蒂芬发生实
-                        打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的
-                        郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生
-                        实打实地方是的郭德纲阿斯蒂芬阿斯蒂芬发生实打实地方是的郭德纲阿
-                        斯蒂芬阿斯蒂芬发生实打实地方是</div>
-                    <div class="zan">
-                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                        <span class="num">13</span>
-                    </div>
-                </li>
-            </ul>
-            <div class="classify" id="classify">
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-            </div>
         </div> -->
+
+        
 
         
     <script src="./js/common/jquery.min.js"></script>
     <script src="./js/common/bootstrap.min.js"></script>
+    <script src="./js/common/bootstrap-paginator.js"></script>
     <script src="./js/common/template.js"></script>
     </body>
 </html>
@@ -73,8 +90,8 @@
         <div class="title">{{ value.title }}</div>
         <div class="describe">{{ value.description }}</div>
         <div class="zan">
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            <span class="num">{{value.stars }}</span>
+            <span class="publish">发布于 {{value.create_time}}</span>
+            <span class="clss">属于 <b>{{value.type}}</b> 分类</span>
         </div>
         <div class="pic"><img src="{{value.pic}}"></div>
     </li>
@@ -83,8 +100,8 @@
         <div class="title">{{ value.title }}</div>
         <div class="describe">{{ value.description }}</div>
         <div class="zan">
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            <span class="num">{{value.stars}}</span>
+            <span class="publish">发布于 {{value.create_time}}</span>
+            <span class="clss">属于 <b>{{value.type}}</b> 分类</span>
         </div>
     </li>
     {{/if}}
@@ -135,5 +152,37 @@
         }]
         var classListHtml = template('classifyList', {classList:classList});
         $('#classify').html(classListHtml);
+        
+
+        // 分页
+        var options = {
+            currentPage: 1, //当前页
+            totalPages: 10, //总页数
+            numberOfPages: 5, //设置控件显示的页码数
+            bootstrapMajorVersion: 3,//如果是bootstrap3版本需要加此标识，并且设置包含分页内容的DOM元素为UL,如果是bootstrap2版本，则DOM包含元素是DIV
+            useBootstrapTooltip: false,//是否显示tip提示框
+            itemTexts:function(type,page, current){//文字翻译
+                switch (type) {
+                    case "first":
+                        return "首页";
+                    case "prev":
+                        return "上一页";
+                    case "next":
+                        return "下一页";
+                    case "last":
+                        return "尾页";
+                    case "page":
+                        return page;
+                }
+            },
+            onPageClicked: function (event, originalEvent, type, page) {
+                console.log(event, originalEvent, type, page,999)
+                //给每个页眉绑定一个事件，其实就是ajax请求
+                $.ajax({
+                    //......
+                })
+            }
+        }
+        $('.pagination').bootstrapPaginator(options)
     })
 </script>
