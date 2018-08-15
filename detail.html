@@ -16,7 +16,7 @@
         <div class="mod-frame">
             <div class="mod-header">
                 <div class="title">杨海涛个人博客</div>
-                <div class="description">提供一个分享个人学习生活工作经验的平台</div>
+                <div class="description">活到老, 学到老。提供一个分享个人学习生活工作经验的平台</div>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
@@ -32,13 +32,7 @@
                     <div class="picture"><img id="image" src=""></div>
                     <div class="content" id="content"></div>
                 </div>
-                <div class="classify" id="classify">
-                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                    <a>斯蒂芬阿斯蒂芬发生实打实地方是</a>
-                </div>
+                <ul class="classify" id="classify"></ul>
             </div>
         </div>
 
@@ -50,8 +44,15 @@
     </body>
 </html>
 
-
+<script id="classifyList" type="text/html">
+    <li class="title">分类目录</li>
+    {{each classList as item i}}
+        <li>{{ item.type }} </li>
+    {{/each}}
+</script>
 <script type="text/javascript">
+var url = "http://116.85.25.126:8082"
+var testUrl = "http://localhost:8082"
 
 function getQueryStringByName(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -67,8 +68,8 @@ function getQueryStringByName(name) {
 $(function(){ 
     $.ajax({
         type:"get",
-        url:"http://116.85.25.126:8082/api/getInfo",
-        data:{id:getQueryStringByName("id")||2},
+        url: url + "/api/getInfo",
+        data:{id:getQueryStringByName("id")||3},
         success: function(res){
             if(res.error==0){
                 var data = res.data
@@ -81,5 +82,15 @@ $(function(){
 
         }
     })
+
+    var classList = [{
+        type:"文学",
+    },{
+        type:"web前端技术"
+    },{
+        type:"linuxs操作系统"
+    }]
+    var classListHtml = template('classifyList', {classList:classList});
+    $('#classify').html(classListHtml);
 })
 </script>

@@ -13,9 +13,10 @@
 }
 
 .mod-frame .mod-header .title{
-    font-size: 30px;
-    color: #000;
+    font-size: 26px;
+    color: #515151;
     font-weight: bold;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif
 }
 
 .mod-frame .mod-header .description{
@@ -38,21 +39,15 @@
     width: 290px;
     margin: 20px 0 0 0;
 }
-
-.mod-ctn .classify a{
+.mod-ctn .classify li{
     width: 100%;
-    height: 46px;
-    line-height: 46px;
-    display: block;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #fff;
-    background: #f69581;
-    padding: 0 20px;
-    box-sizing: border-box;
-    cursor: pointer;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    margin-bottom: 10px;
+    color: #999;
+    font-size: 14px;
+    box-sizing: border-box
+}
+.mod-ctn .classify li.title{
+    padding: 10px 0;
+    color: #636363;
+    font-size: 15px;
+    font-weight: 600
 }
