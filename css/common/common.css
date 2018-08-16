@@ -1,7 +1,7 @@
 .mod-frame{
     width: 1220px;
     margin: 40px auto 50px;
-    box-shadow: 0 0 3px 3px #ccc;
+    box-shadow: 0 0 5px 5px #ccc;
     background: #fff;
     padding: 24px 40px 0;
     border-radius: 5px;
@@ -39,6 +39,7 @@
     float: right;
     width: 290px;
     margin: 35px 0 0 0;
+    min-height: 700px;
 }
 .mod-ctn .classify .input-group{
     width: 100%;
