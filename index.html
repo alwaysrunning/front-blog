@@ -57,13 +57,11 @@
                 邮箱:178224406@qq.com<span>|</span>GitHub:https://github.com/alwaysrunning
             </div>
         </div>
-
-
-        
     <script src="./js/common/jquery.min.js"></script>
     <script src="./js/common/bootstrap.min.js"></script>
     <script src="./js/common/bootstrap-paginator.js"></script>
     <script src="./js/common/template.js"></script>
+    <script src="./js/common/config.js"></script>
     </body>
 </html>
 
@@ -100,74 +98,97 @@
 </script>
 
 <script type="text/javascript">
-var url = "http://116.85.25.126:8082"
-var testUrl = "http://localhost:8082"
-    $(function(){
-        $.ajax({
-            type:"get",
-            url: url + "/api/list",
-            data:{},
-            success: function(res){
-                if(res.data){
-                    let list = res.data;
-                    var html = template('listCnt', {list:list});
-                    $('#list').html(html);
-                }
-            },
-            error: function(){
+var pageSize = 5
+var currentPage = 1
+var totalPages = 2
+var total = 1
+var title = ''
 
+// 获取列表
+function getList(opts){
+    $.ajax({
+        type:"get",
+        url: url + "/api/list",
+        data:{
+            pageSize:opts.pageSize || pageSize,
+            currentPage:opts.currentPage || currentPage,
+            title:opts.title || title,
+        },
+        success: function(res){
+            if(res.data){
+                var list = res.data;
+                pageSize = res.pageSize;
+                currentPage = res.currentPage;
+                total = res.total;
+                totalPages = Math.ceil(total/pageSize)
+                pagination()
+                var html = template('listCnt', {list:list});
+                $('#list').html(html);
             }
-        })
-        
-        $("#list").delegate("li", "click", function(e){
-            var id = $(this).data("id");
-            window.location.href = "http://116.85.25.126/detail.html?id="+id
-        })
+        },
+        error: function(){
 
-
-        // 右边分类渲染
-        // var arr = ["febb50","f69581","f4e0bd","c1e4de","b7d6ec"]  // 背景颜色
-
-        // var classList = [{
-        //     type:"文学",
-        // },{
-        //     type:"web前端技术"
-        // },{
-        //     type:"linuxs操作系统"
-        // }]
-        // var classListHtml = template('classifyList', {classList:classList});
-        // $('#classify').html(classListHtml);
-        
-
-        // 分页
-        var options = {
-            currentPage: 1, //当前页
-            totalPages: 10, //总页数
-            numberOfPages: 5, //设置控件显示的页码数
-            bootstrapMajorVersion: 3,//如果是bootstrap3版本需要加此标识，并且设置包含分页内容的DOM元素为UL,如果是bootstrap2版本，则DOM包含元素是DIV
-            useBootstrapTooltip: false,//是否显示tip提示框
-            itemTexts:function(type,page, current){//文字翻译
-                switch (type) {
-                    case "first":
-                        return "首页";
-                    case "prev":
-                        return "上一页";
-                    case "next":
-                        return "下一页";
-                    case "last":
-                        return "尾页";
-                    case "page":
-                        return page;
-                }
-            },
-            onPageClicked: function (event, originalEvent, type, page) {
-                console.log(event, originalEvent, type, page,999)
-                //给每个页眉绑定一个事件，其实就是ajax请求
-                $.ajax({
-                    //......
-                })
-            }
         }
-        $('.pagination').bootstrapPaginator(options)
     })
+}
+
+// 分页
+function pagination(){
+    var options = {
+        currentPage: currentPage, //当前页
+        totalPages: totalPages, //总页数
+        numberOfPages: 5, //设置控件显示的页码数
+        bootstrapMajorVersion: 3,//如果是bootstrap3版本需要加此标识，并且设置包含分页内容的DOM元素为UL,如果是bootstrap2版本，则DOM包含元素是DIV
+        useBootstrapTooltip: false,//是否显示tip提示框
+        itemTexts:function(type,page, current){//文字翻译
+            switch (type) {
+                case "first":
+                    return "首页";
+                case "prev":
+                    return "上一页";
+                case "next":
+                    return "下一页";
+                case "last":
+                    return "尾页";
+                case "page":
+                    return page;
+            }
+        },
+        onPageClicked: function (event, originalEvent, type, page) {
+            console.log(event, originalEvent, type, page,999)
+            //给每个页眉绑定一个事件，其实就是ajax请求
+            getList({currentPage:page})
+        }
+    }
+    $('.pagination').bootstrapPaginator(options)
+}
+
+$(function(){
+    
+    getList({
+        pageSize:pageSize,
+        currentPage:currentPage,
+        title:title
+    })
+    
+    $("#list").delegate("li", "click", function(e){
+        var id = $(this).data("id");
+        window.location.href = "http://116.85.25.126/detail.html?id="+id
+    })
+
+
+    // 右边分类渲染
+    // var arr = ["febb50","f69581","f4e0bd","c1e4de","b7d6ec"]  // 背景颜色
+
+    // var classList = [{
+    //     type:"文学",
+    // },{
+    //     type:"web前端技术"
+    // },{
+    //     type:"linuxs操作系统"
+    // }]
+    // var classListHtml = template('classifyList', {classList:classList});
+    // $('#classify').html(classListHtml);
+    
+})
 </script>

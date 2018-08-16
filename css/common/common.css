@@ -3,9 +3,8 @@
     margin: 40px auto 50px;
     box-shadow: 0 0 3px 3px #ccc;
     background: #fff;
-    padding: 24px 40px;
-    min-height: 700px;
-    position: relative;
+    padding: 24px 40px 0;
+    border-radius: 5px;
 }
 .mod-frame .mod-header{
     width: 100%;
@@ -39,7 +38,7 @@
 .mod-ctn .classify{
     float: right;
     width: 290px;
-    margin: 20px 0 0 0;
+    margin: 35px 0 0 0;
 }
 .mod-ctn .classify .input-group{
     width: 100%;
@@ -70,9 +69,7 @@
 }
 
 .footer{
-    margin: 0 auto;
-    position: absolute;
-    bottom: 0;
+    margin: 20px auto 0;
     color: #999;
     width: 1140px;
     height: 60px;

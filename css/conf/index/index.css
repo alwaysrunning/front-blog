@@ -6,6 +6,7 @@
 .mod-ctn .list{
     float: left;
     width: 746px;
+    margin-top: 16px;
 }
 
 .mod-ctn .list li{
