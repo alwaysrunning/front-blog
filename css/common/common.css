@@ -5,6 +5,7 @@
     background: #fff;
     padding: 24px 40px;
     min-height: 700px;
+    position: relative;
 }
 .mod-frame .mod-header{
     width: 100%;
@@ -25,6 +26,9 @@
     padding: 10px 0 20px;
 }
 
+
+
+/* 右边分类 */
 .mod-frame .mod-header .input-group{
     position: absolute;
     right: 10px;
@@ -32,22 +36,52 @@
     width: 250px;
 }
 
-
-/* 右边分类 */
 .mod-ctn .classify{
     float: right;
     width: 290px;
     margin: 20px 0 0 0;
 }
-.mod-ctn .classify li{
+.mod-ctn .classify .input-group{
     width: 100%;
     color: #999;
     font-size: 14px;
-    box-sizing: border-box
+    margin: 5px 0 30px;
 }
-.mod-ctn .classify li.title{
-    padding: 10px 0;
-    color: #636363;
-    font-size: 15px;
-    font-weight: 600
+
+.mod-ctn .classify h1{
+    font-size: 16px;
+    color: #333;
+    padding-left:4px;
+}
+
+.mod-ctn .classify .category{
+    width: 100%;
+    color: #999;
+    font-size: 14px;
+}
+
+.mod-ctn .classify .category a{
+    float: left;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    margin:0 10px 10px 0;
+    cursor: pointer;
+}
+
+.footer{
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    color: #999;
+    width: 1140px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 12px;
+    text-align: center;
+    border-top: 1px solid #ededed;
+}
+
+.footer span{
+    padding: 0 10px;
 }

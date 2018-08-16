@@ -6,6 +6,24 @@
     float: left;
     width: 746px;
 }
+
+.mod-ctn .leftcn .zan{
+    width: 100%;
+    color: #999;
+    padding: 20px 0;
+    font-size: 12px;
+    border-bottom: 1px solid #ededed;
+}
+
+.mod-ctn .leftcn .zan .publish{
+    padding: 0
+}
+
+.mod-ctn .leftcn .zan .clss{
+    padding-left: 10px
+}
+
+
 .mod-ctn .title{
     width: 100%;
     font-size: 28px;
@@ -35,8 +53,9 @@
 }
 
 .mod-ctn .content{
-    margin-top: 20px;
+    margin: 20px 0;
     border-top: 1px solid #999;
     padding-top:20px; 
     width: 100%;
 }
+

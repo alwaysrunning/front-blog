@@ -17,12 +17,6 @@
             <div class="mod-header">
                 <div class="title">杨海涛个人博客</div>
                 <div class="description">活到老, 学到老。提供一个分享个人学习生活工作经验的平台</div>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                </div>
             </div>
             <div class="mod-ctn">
                 <div class="leftcn">
@@ -31,8 +25,27 @@
                     <div class="authorInfo">日期：<span>2018年7月27日</span></div>
                     <div class="picture"><img id="image" src=""></div>
                     <div class="content" id="content"></div>
+                    <div class="zan">
+                        <span class="publish">发布于2018-08-08</span>
+                        <span class="clss">属于 技术 分类</span>
+                    </div>
                 </div>
-                <ul class="classify" id="classify"></ul>
+                <div class="classify">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                    <h1>分类目录</h1>
+                    <div class="category" id="classify">
+                        <a>技术</a>
+                        <a>文学</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                邮箱:178224406@qq.com<span>|</span>GitHub:https://github.com/alwaysrunning
             </div>
         </div>
 
@@ -45,9 +58,8 @@
 </html>
 
 <script id="classifyList" type="text/html">
-    <li class="title">分类目录</li>
     {{each classList as item i}}
-        <li>{{ item.type }} </li>
+        <a>{{ item.type }} </a>
     {{/each}}
 </script>
 <script type="text/javascript">

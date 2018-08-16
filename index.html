@@ -18,12 +18,6 @@
             <div class="mod-header">
                 <div class="title">杨海涛个人博客</div>
                 <div class="description">活到老, 学到老。提供一个分享个人学习生活工作经验的平台</div>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                </div>
             </div>
             <div class="mod-ctn">
                 <div class="list">
@@ -45,11 +39,22 @@
                         <ul class="pagination"></ul>
                     </nav>
                 </div>
-                <ul class="classify" id="classify">
-                    <li class="title">分类目录</li>
-                    <li>技术技术技术</li>
-                    <li>文学文学文学</li>
-                </ul>
+                <div class="classify" >
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                    <h1>分类目录</h1>
+                    <div class="category" id="classify">
+                        <a>技术</a>
+                        <a>文学</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                邮箱:178224406@qq.com<span>|</span>GitHub:https://github.com/alwaysrunning
             </div>
         </div>
 
@@ -89,9 +94,8 @@
 </script>
 
 <script id="classifyList" type="text/html">
-<li class="title">分类目录</li>
 {{each classList as item i}}
-    <li>{{ item.type }} </li>
+    <a>{{ item.type }} </a>
 {{/each}}
 </script>
 
@@ -117,22 +121,22 @@ var testUrl = "http://localhost:8082"
         
         $("#list").delegate("li", "click", function(e){
             var id = $(this).data("id");
-            window.location.href = "http://116.85.25.126:8888/detail.html?id="+id
+            window.location.href = "http://116.85.25.126/detail.html?id="+id
         })
 
 
         // 右边分类渲染
         // var arr = ["febb50","f69581","f4e0bd","c1e4de","b7d6ec"]  // 背景颜色
 
-        var classList = [{
-            type:"文学",
-        },{
-            type:"web前端技术"
-        },{
-            type:"linuxs操作系统"
-        }]
-        var classListHtml = template('classifyList', {classList:classList});
-        $('#classify').html(classListHtml);
+        // var classList = [{
+        //     type:"文学",
+        // },{
+        //     type:"web前端技术"
+        // },{
+        //     type:"linuxs操作系统"
+        // }]
+        // var classListHtml = template('classifyList', {classList:classList});
+        // $('#classify').html(classListHtml);
         
 
         // 分页
