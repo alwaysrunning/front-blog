@@ -93,7 +93,7 @@
 
 <script id="classifyList" type="text/html">
 {{each classList as item i}}
-    <a>{{ item.type }} </a>
+    <a>{{ item.type_name }} </a>
 {{/each}}
 </script>
 
@@ -177,18 +177,23 @@ $(function(){
     })
 
 
-    // 右边分类渲染
-    // var arr = ["febb50","f69581","f4e0bd","c1e4de","b7d6ec"]  // 背景颜色
+    $.ajax({
+        type:"get",
+        url: url + "/api/classlist",
+        data:{},
+        success: function(res){
+            if(res.error==0){
+                var data = res.data
+                if(data){
+                    var classListHtml = template('classifyList', {classList:data});
+                    $('#classify').html(classListHtml);
+                }  
+            }
+        },
+        error: function(){
 
-    // var classList = [{
-    //     type:"文学",
-    // },{
-    //     type:"web前端技术"
-    // },{
-    //     type:"linuxs操作系统"
-    // }]
-    // var classListHtml = template('classifyList', {classList:classList});
-    // $('#classify').html(classListHtml);
+        }
+    }) 
     
 })
 </script>

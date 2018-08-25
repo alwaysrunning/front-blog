@@ -25,10 +25,10 @@
                     <div class="authorInfo">日期：<span>2018年7月27日</span></div>
                     <div class="picture"><img id="image" src=""></div>
                     <!-- <div class="content" id="content"></div> -->
-                    <div class="content" id="content"><p>我们在清理缓存前应该先</p><p>sync下</p><p>因为系统在操作的过程当中，会把你的操作到的文件资料先保存到buffer中去，因为怕你在操作的过程中因为断电等原因遗失数据，所以在你操作过程中会把文件资料先缓存。</p><p>所以我们在清理缓存先要先把buffe中的数据先写入到硬盘中，sync命令</p><p><br></p><p>上面的echo 3 是清理所有缓存</p><p>echo 0 是不释放缓存</p><p>echo 1 是释放页缓存</p><p>ehco 2 是释放dentries和inodes缓存</p><p>echo 3 是释放 1 和 2 中说道的的所有缓存</p><p>&nbsp;</p><p>说明：</p><p>1&gt;. /proc是一个虚拟文件系统，我们可以通过对它的读写操作作为与kernel实体间进行通信的一种手段。也就是说可以通过修改/proc中的文件，来对当前kernel的行为做出调整。也就是说我们可以通过调整/proc/sys/vm/drop_caches来释放内存。</p><p>0 – 不释放</p><p>1 – 释放页缓存</p><p>2 – 释放dentries和inodes</p><p>3 – 释放所有缓存</p><p>数字1是用来清空最近放问过的文件页面缓存</p><p>数字2是用来清空文件节点缓存和目录项缓存</p><p>数字3是用来清空1和2所有内容的缓存。</p><p>2&gt;. 关于drop_caches的官方说明如下：</p><p>Writing to this file causes the kernel to drop clean caches,dentries and inodes from memory, causing that memory to becomefree.</p><p>To free pagecache, use echo 1 &gt; /proc/sys/vm/drop_caches;</p><p>to free<strong>&nbsp;dentries&nbsp;</strong>and<strong>&nbsp;inodes</strong>, use echo 2 &gt; /proc/sys/vm/drop_caches;</p><p>to free pagecache, dentries and inodes, use echo 3 &gt;/proc/sys/vm/drop_caches.</p><p>Because this is a non-destructive operation and dirty objects are not freeable, the user should run sync first.</p></div>
+                    <div class="content" id="content"></div>
                     <div class="zan">
-                        <span class="publish">发布于2018-08-08</span>
-                        <span class="clss">属于 技术 分类</span>
+                        <span class="publish" id="publish"></span>
+                        <span class="clss" id="clss"></span>
                     </div>
                 </div>
                 <div class="classify">
@@ -58,7 +58,7 @@
 
 <script id="classifyList" type="text/html">
     {{each classList as item i}}
-        <a>{{ item.type }} </a>
+        <a>{{ item.type_name }} </a>
     {{/each}}
 </script>
 <script type="text/javascript">
@@ -84,8 +84,12 @@ $(function(){
                 var data = res.data
                 if(data){
                     $("#title").html(data.title)
-                    //$("#content").html(data.content)
-                    $("#image").attr("src",data.pic)
+                    $("#content").html(data.content)
+                    if(data.pic){
+                        $("#image").attr("src",data.pic)
+                    }
+                    $("#publish").html('发布于'+ data.create_time)
+                    $("#clss").html('属于 '+data.type+' 分类')
                 }  
             }
         },
@@ -94,14 +98,23 @@ $(function(){
         }
     })
 
-    var classList = [{
-        type:"文学",
-    },{
-        type:"web前端技术"
-    },{
-        type:"linuxs操作系统"
-    }]
-    var classListHtml = template('classifyList', {classList:classList});
-    $('#classify').html(classListHtml);
+
+    $.ajax({
+        type:"get",
+        url: url + "/api/classlist",
+        data:{},
+        success: function(res){
+            if(res.error==0){
+                var data = res.data
+                if(data){
+                    var classListHtml = template('classifyList', {classList:data});
+                    $('#classify').html(classListHtml);
+                }  
+            }
+        },
+        error: function(){
+
+        }
+    }) 
 })
 </script>
