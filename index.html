@@ -200,7 +200,7 @@ $(function(){
 
     var p = pMonitor.getLoadTime()
     var t = pMonitor.getTimeoutRes()
-    console.log(p, t, performance.getEntriesByType('navigation'))
-    
+    console.log(p, t, performance.getEntriesByType('navigation'),)
+    console.log(performance.getEntriesByType('navigation')[0],performance.getEntriesByType('navigation')[0].domComplete)
 })
 </script>
