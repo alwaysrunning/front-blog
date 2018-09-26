@@ -181,6 +181,26 @@ $(function(){
 
         }
     }) 
+
+    var pMonitor = {}
+    //页面加载时间
+    pMonitor.getLoadTime = ()=>{
+        return performance.getEntriesByType('navigation')[0].domComplete
+    }
+    
+    // //获取加载超过1秒的资源名称
+    pMonitor.getTimeoutRes = ()=>{
+        return performance.getEntriesByType('resource').filter((item)=>{
+            var time = item.responseEnd - item.startTime
+            if(time/1000>1) return true
+        }).map((v)=>{
+            return v.name
+        })
+    }
+
+    var p = pMonitor.getLoadTime()
+    var t = pMonitor.getTimeoutRes()
+    console.log(p, t)
     
 })
 </script>
