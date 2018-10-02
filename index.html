@@ -200,8 +200,9 @@ $(function(){
 
     var p = pMonitor.getLoadTime()
     var t = pMonitor.getTimeoutRes()
-    var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;     
-    console.log('Page load time is '+ loadTime);
-    console.log(p, t, performance.getEntriesByType('navigation'))
+    console.log(performance.getEntriesByType('navigation')[0])
+    console.log(performance.getEntriesByType('navigation')[0].domComplete)
+    console.log(performance.getEntriesByType('navigation')[0].domContentLoadedEventEnd)
+    console.log(parseInt(performance.getEntriesByType('navigation')[0].domComplete))
 })
 </script>
