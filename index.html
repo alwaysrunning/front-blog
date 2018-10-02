@@ -182,6 +182,9 @@ $(function(){
         }
     }) 
 
+    
+})
+window.onload = function(){
     var pMonitor = {}
     //页面加载时间
     pMonitor.getLoadTime = ()=>{
@@ -200,9 +203,10 @@ $(function(){
 
     var p = pMonitor.getLoadTime()
     var t = pMonitor.getTimeoutRes()
-    console.log(performance.getEntriesByType('navigation')[0])
+
+    var timing = performance.timing
+    console.log(timing.domContentLoadedEventStart - timing.domInteractive)
     console.log(performance.getEntriesByType('navigation')[0].domComplete)
-    console.log(performance.getEntriesByType('navigation')[0].domContentLoadedEventEnd)
-    console.log(parseInt(performance.getEntriesByType('navigation')[0].domComplete))
-})
+
+}
 </script>
