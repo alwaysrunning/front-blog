@@ -192,7 +192,7 @@ $(function(){
     pMonitor.getTimeoutRes = ()=>{
         return performance.getEntriesByType('resource').filter((item)=>{
             var time = item.responseEnd - item.startTime
-            if(time/1000>0.1) return true
+            if(time/1000>0.01) return true
         }).map((v)=>{
             return v.name
         })
@@ -200,7 +200,8 @@ $(function(){
 
     var p = pMonitor.getLoadTime()
     var t = pMonitor.getTimeoutRes()
-    console.log(p, t, performance.getEntriesByType('navigation'),)
-    console.log(performance.getEntriesByType('navigation')[0].decodedBodySize, performance.getEntriesByType('navigation')[0].domComplete)
+    var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;     
+    console.log('Page load time is '+ loadTime);
+    console.log(p, t, performance.getEntriesByType('navigation'))
 })
 </script>
