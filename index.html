@@ -184,6 +184,7 @@ $(function(){
 
     
 })
+
 window.onload = function(){
     var pMonitor = {}
     //页面加载时间
@@ -191,7 +192,7 @@ window.onload = function(){
         return performance.getEntriesByType('navigation')[0].domComplete
     }
     
-    // //获取加载超过0.1秒的资源名称
+    // //获取加载超过0.01秒的资源名称
     pMonitor.getTimeoutRes = ()=>{
         return performance.getEntriesByType('resource').filter((item)=>{
             var time = item.responseEnd - item.startTime
@@ -203,10 +204,7 @@ window.onload = function(){
 
     var p = pMonitor.getLoadTime()
     var t = pMonitor.getTimeoutRes()
-
-    var timing = performance.timing
-    console.log(timing.domContentLoadedEventStart - timing.domInteractive)
-    console.log(performance.getEntriesByType('navigation')[0].domComplete)
-
+    console.log(performance.getEntriesByType('navigation'))
+    console.log(performance.getEntriesByType('resource'))
 }
 </script>
