@@ -185,26 +185,26 @@ $(function(){
     
 })
 
-window.onload = function(){
-    var pMonitor = {}
-    //页面加载时间
-    pMonitor.getLoadTime = ()=>{
-        return performance.getEntriesByType('navigation')[0].domComplete
-    }
+// window.onload = function(){
+//     var pMonitor = {}
+//     //页面加载时间
+//     pMonitor.getLoadTime = ()=>{
+//         return performance.getEntriesByType('navigation')[0].domComplete
+//     }
     
-    // //获取加载超过0.01秒的资源名称
-    pMonitor.getTimeoutRes = ()=>{
-        return performance.getEntriesByType('resource').filter((item)=>{
-            var time = item.responseEnd - item.startTime
-            if(time/1000>0.01) return true
-        }).map((v)=>{
-            return v.name
-        })
-    }
+//     //获取加载超过0.01秒的资源名称
+//     pMonitor.getTimeoutRes = ()=>{
+//         return performance.getEntriesByType('resource').filter((item)=>{
+//             var time = item.responseEnd - item.startTime
+//             if(time/1000>0.01) return true
+//         }).map((v)=>{
+//             return v.name
+//         })
+//     }
 
-    var p = pMonitor.getLoadTime()
-    var t = pMonitor.getTimeoutRes()
-    console.log(performance.getEntriesByType('navigation'))
-    console.log(performance.getEntriesByType('resource'))
-}
+//     var p = pMonitor.getLoadTime()
+//     var t = pMonitor.getTimeoutRes()
+//     console.log(p, '页面加载的时长')
+//     console.log(t, '获取加载超过0.01秒的资源名称')
+// }
 </script>
