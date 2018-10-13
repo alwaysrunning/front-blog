@@ -22,9 +22,16 @@
             <div class="mod-ctn">
                 <div class="list">
                     <ul id="list"></ul>
-                    <nav aria-label="Page navigation">
+                    <nav aria-label="Page navigation" id="navigation">
                         <ul class="pagination"></ul>
                     </nav>
+                    <div class="loading" id="loading">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
                 <div class="classify" >
                     <div class="input-group">
@@ -44,6 +51,7 @@
                 邮箱:178224406@qq.com<span>|</span>GitHub:https://github.com/alwaysrunning
             </div>
         </div>
+        
     <script src="./js/common/jquery.min.js"></script>
     <script src="./js/common/bootstrap.min.js"></script>
     <script src="./js/common/bootstrap-paginator.js"></script>
@@ -91,8 +99,14 @@ var totalPages = 2
 var total = 1
 var title = ''
 
+var loading = $('#loading')
+var jList = $('#list')
+var navigation = $('#navigation')
 // 获取列表
 function getList(opts){
+    loading.show()
+    jList.hide()
+    navigation.hide()
     $.ajax({
         type:"get",
         url: url + "/api/list",
@@ -102,6 +116,9 @@ function getList(opts){
             title:opts.title || title,
         },
         success: function(res){
+            loading.hide()
+            jList.show()
+            navigation.show()
             if(res.data){
                 var list = res.data;
                 pageSize = res.pageSize;
@@ -114,7 +131,7 @@ function getList(opts){
             }
         },
         error: function(){
-
+            loading.hide()
         }
     })
 }
@@ -185,26 +202,27 @@ $(function(){
     
 })
 
-// window.onload = function(){
-//     var pMonitor = {}
-//     //页面加载时间
-//     pMonitor.getLoadTime = ()=>{
-//         return performance.getEntriesByType('navigation')[0].domComplete
-//     }
+window.onload = function(){
+    if(!window.performance) return
+    var pMonitor = {}
+    //页面加载时间
+    pMonitor.getLoadTime = ()=>{
+        return performance.getEntriesByType('navigation')[0].domComplete
+    }
     
-//     //获取加载超过0.01秒的资源名称
-//     pMonitor.getTimeoutRes = ()=>{
-//         return performance.getEntriesByType('resource').filter((item)=>{
-//             var time = item.responseEnd - item.startTime
-//             if(time/1000>0.01) return true
-//         }).map((v)=>{
-//             return v.name
-//         })
-//     }
+    //获取加载超过0.01秒的资源名称
+    pMonitor.getTimeoutRes = ()=>{
+        return performance.getEntriesByType('resource').filter((item)=>{
+            var time = item.responseEnd - item.startTime
+            if(time/1000>0.05) return true
+        }).map((v)=>{
+            return v.name
+        })
+    }
 
-//     var p = pMonitor.getLoadTime()
-//     var t = pMonitor.getTimeoutRes()
-//     console.log(p, '页面加载的时长')
-//     console.log(t, '获取加载超过0.01秒的资源名称')
-// }
+    var p = pMonitor.getLoadTime()
+    var t = pMonitor.getTimeoutRes()
+    console.log(p, '页面加载的时长')
+    console.log(t, '获取加载超过0.05秒的资源名称')
+}
 </script>
