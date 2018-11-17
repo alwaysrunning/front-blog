@@ -206,12 +206,12 @@ window.onload = function(){
     if(!window.performance) return
     var pMonitor = {}
     //页面加载时间
-    pMonitor.getLoadTime = ()=>{
+    pMonitor.getLoadTime = function(){
         return performance.getEntriesByType('navigation')[0].domComplete
     }
     
     //获取加载超过0.01秒的资源名称
-    pMonitor.getTimeoutRes = ()=>{
+    pMonitor.getTimeoutRes = function(){
         return performance.getEntriesByType('resource').filter((item)=>{
             var time = item.responseEnd - item.startTime
             if(time/1000>0.05) return true
