@@ -212,10 +212,10 @@ window.onload = function(){
     
     //获取加载超过0.01秒的资源名称
     pMonitor.getTimeoutRes = function(){
-        return performance.getEntriesByType('resource').filter((item)=>{
+        return performance.getEntriesByType('resource').filter(function(item){
             var time = item.responseEnd - item.startTime
             if(time/1000>0.05) return true
-        }).map((v)=>{
+        }).map(function(v){
             return v.name
         })
     }
