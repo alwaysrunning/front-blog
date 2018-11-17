@@ -207,7 +207,11 @@ window.onload = function(){
     var pMonitor = {}
     //页面加载时间
     pMonitor.getLoadTime = function(){
-        return performance.getEntriesByType('navigation')[0].domComplete
+        if(performance.getEntriesByType('navigation') && performance.getEntriesByType('navigation')[0]){
+            if(performance.getEntriesByType('navigation')[0].domComplete){
+                return performance.getEntriesByType('navigation')[0].domComplete
+            }
+        }  
     }
     
     //获取加载超过0.01秒的资源名称
